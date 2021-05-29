@@ -1,15 +1,15 @@
 'use strict';
 
+//declaring varibles 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.close-modal');
 const btnsOpenModal = document.querySelectorAll('.show-modal');
-console.log(btnsOpenModal);
+
 
 
 //function for opening modals
 const openModal = function () {
-        console.log('Button clicked');
         modal.classList.remove('hidden');
         overlay.classList.remove('hidden');
 }
@@ -28,5 +28,16 @@ const closeModal = function() {
 //calling the onClick event for closeModal funciton
 btnCloseModal.addEventListener('click', closeModal); 
 overlay.addEventListener('click', closeModal);
+
+//by using document listening for events on the whole page
+document.addEventListener('keydown', function(e) {
+    console.log(e.key);
+
+ // if  escape key is pressed and modal does not contain class hidden it will run closeModal function
+    if(e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        
+        closeModal();
+    }
+});
 
 
